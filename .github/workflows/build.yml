@@ -1,0 +1,25 @@
+name: Build
+
+on: [push]
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: |
+          sudo apt install -y -o Acquire::Retries=50 \
+                           build-essential libncurses5-dev libncursesw5-dev \
+                           zlib1g-dev gawk git gettext libssl-dev xsltproc \
+                           wget unzip python
+      - name: Build image
+        run: |
+          make
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: openwrt-ramips-mt76x8-glinet_microuter-n300-squashfs-sysupgrade.bin
