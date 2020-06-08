@@ -1,6 +1,13 @@
 #!/bin/sh
 
+cat <<EOF > /etc/firewall.6doll
+ip6tables -t nat -I POSTROUTING -s fc00::/7 ! -d fc00::/7 -j MASQUERADE
+EOF
+
 uci -q batch <<-EOF
 	set network.lan.proto='dhcp'
 	commit network
+	add firewall include
+	set firewall.@include[-1].path='/etc/firewall.6doll'
+	commit firewall
 EOF
