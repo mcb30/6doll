@@ -10,6 +10,11 @@ uci -q batch <<-EOF
 	set network.lan.proto='dhcp'
 	set network.lan.ipaddr=''
 	set network.lan.netmask=''
+	set network.lanx='interface'
+	set network.lanx.ifname='@lan'
+	set network.lanx.proto='static'
+	set network.lanx.ipaddr='192.168.8.1'
+	set network.lanx.netmask='255.255.255.0'
 	commit network
 	add firewall include
 	set firewall.@include[-1].path='/etc/firewall.6doll'
