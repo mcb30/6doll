@@ -24,6 +24,7 @@ $(BUILDER)/Makefile : $(BUILDER_TAR)
 	touch $@
 
 $(SYSUPGRADE_BIN) : $(BUILDER)/Makefile
+	find files -name '*~' -delete
 	$(MAKE) -C $(BUILDER) PROFILE=$(PROFILE) \
 		PACKAGES="miredo kmod-ipt-nat6 luci" \
 		FILES="$(shell pwd)/files" \
