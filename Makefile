@@ -29,6 +29,9 @@ $(SYSUPGRADE_BIN) : $(BUILDER)/Makefile
 		image
 	cp $(BUILDER)/bin/targets/$(ARCH)/$(TARGET)/$@ $@
 
+install : $(SYSUPGRADE_BIN)
+	curl --form firmware=@$< --form submit=1 http://192.168.1.1
+
 clean :
 	$(RM) -r $(BUILDER)
 	$(RM) $(SYSUPGRADE_BIN)
