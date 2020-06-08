@@ -23,6 +23,7 @@ uci -q batch <<-EOF
 	set dhcp.lan.ra_default='2'
 	set dhcp.lan.ra_slaac='1'
 	set dhcp.lan.ra_flags='none'
+	set dhcp.lan.ra_dns='0'
 	set dhcp.lan.ra_preference='low'
 	set dhcp.lan.ra_maxinterval='60'
 	set dhcp.lan.ra_mininterval='15'
