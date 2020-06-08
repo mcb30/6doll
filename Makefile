@@ -25,7 +25,8 @@ $(BUILDER)/Makefile : $(BUILDER_TAR)
 
 $(SYSUPGRADE_BIN) : $(BUILDER)/Makefile
 	$(MAKE) -C $(BUILDER) PROFILE=$(PROFILE) \
-		PACKAGES="miredo kmod-ipt-nat6" FILES="$(shell pwd)/files" \
+		PACKAGES="miredo kmod-ipt-nat6 luci" \
+		FILES="$(shell pwd)/files" \
 		image
 	cp $(BUILDER)/bin/targets/$(ARCH)/$(TARGET)/$@ $@
 
