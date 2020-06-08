@@ -5,6 +5,8 @@ ip6tables -t nat -I POSTROUTING -s fc00::/7 ! -d fc00::/7 -j MASQUERADE
 EOF
 
 uci -q batch <<-EOF
+	set system.@system[0].hostname='6doll'
+	commit system
 	set network.lan.proto='dhcp'
 	commit network
 	add firewall include
