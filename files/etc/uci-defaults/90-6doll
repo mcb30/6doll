@@ -31,3 +31,7 @@ uci -q batch <<-EOF
 	set dhcp.lan.leasetime='600'
 	commit dhcp
 EOF
+
+# Use serial number (printed on case) as password
+PASSWD=$(dd if=/dev/mtd2 bs=1 skip=16432 count=16)
+echo -e "${PASSWD}\n${PASSWD}" | passwd
