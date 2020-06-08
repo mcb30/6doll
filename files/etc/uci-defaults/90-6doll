@@ -10,4 +10,15 @@ uci -q batch <<-EOF
 	add firewall include
 	set firewall.@include[-1].path='/etc/firewall.6doll'
 	commit firewall
+	set dhcp.lan.ra='server'
+	set dhcp.lan.ra_default='2'
+	set dhcp.lan.ra_slaac='1'
+	set dhcp.lan.ra_flags='none'
+	set dhcp.lan.ra_preference='low'
+	set dhcp.lan.ra_maxinterval='60'
+	set dhcp.lan.ra_mininterval='15'
+	set dhcp.lan.ra_lifetime='300'
+	set dhcp.lan.ra_useleasetime='1'
+	set dhcp.lan.leasetime='600'
+	commit dhcp
 EOF
