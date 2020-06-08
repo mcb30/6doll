@@ -43,6 +43,17 @@ Installing
 7. Upload the new [firmware image][sysimage] to your N300 via the web
    page at `http://192.168.1.1`.
 
+Troubleshooting
+---------------
+
+1. Configure your workstation with an additional IP address
+   `192.168.8.2/24`.  (Note that this is different from the address
+   used above for installing a new firmware image.)
+2. Log in to the [OpenWrt](openwrt) control panel for your N300 at
+   `http://192.168.8.1` using the user name `root`.  The initial
+   password is set to the device serial number (`S/N`), which you can
+   find printed on the case label.
+
 
 [sysimage]: https://github.com/unipartdigital/6doll/releases/latest/download/openwrt-ramips-mt76x8-glinet_microuter-n300-squashfs-sysupgrade.bin
 [openwrt]: https://openwrt.org/
