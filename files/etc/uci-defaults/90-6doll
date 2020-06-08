@@ -8,6 +8,8 @@ uci -q batch <<-EOF
 	set system.@system[0].hostname='6doll'
 	commit system
 	set network.lan.proto='dhcp'
+	set network.lan.ipaddr=''
+	set network.lan.netmask=''
 	commit network
 	add firewall include
 	set firewall.@include[-1].path='/etc/firewall.6doll'
