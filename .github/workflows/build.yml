@@ -23,3 +23,22 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: openwrt-ramips-mt76x8-glinet_microuter-n300-squashfs-sysupgrade.bin
+      - name: Create release
+        id: create_release
+        if: startsWith(github.event.ref, 'refs/tags/v')
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+      - name: Upload release assets
+        if: startsWith(github.event.ref, 'refs/tags/v')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: openwrt-ramips-mt76x8-glinet_microuter-n300-squashfs-sysupgrade.bin
+          asset_name: openwrt-ramips-mt76x8-glinet_microuter-n300-squashfs-sysupgrade.bin
+          asset_content_type: application/octet-stream
