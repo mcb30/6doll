@@ -6,6 +6,11 @@ EOF
 
 uci -q batch <<-EOF
 	set system.@system[0].hostname='6doll'
+	set system.led_white='led'
+	set system.led_white.name='Link'
+	set system.led_white.sysfs='microuter-n300:white:wlan'
+	set system.led_white.trigger='switch0'
+	set system.led_white.port_mask=0x1
 	commit system
 	set network.lan.proto='dhcp'
 	set network.lan.ipaddr=''
