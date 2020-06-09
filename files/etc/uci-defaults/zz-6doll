@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cat <<EOF > /etc/firewall.6doll
+ip6tables -t filter -I forwarding_lan_rule -s fc00::/7 ! -d fc00::/7 -j ACCEPT
 ip6tables -t nat -I POSTROUTING -s fc00::/7 ! -d fc00::/7 -j MASQUERADE
 EOF
 
