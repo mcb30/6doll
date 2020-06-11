@@ -1,6 +1,8 @@
 IPv6 Device On Legacy Link
 ==========================
 
+<img align="right" src="n300.jpg" />
+
 The IPv6 Device On Legacy Link (`6doll`) is a small device that can be
 attached to almost any home router to provide last-resort IPv6
 connectivity.  It is designed for use with ISPs such as [Virgin
